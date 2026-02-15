@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGMA SEARCH UNBLOCKER</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .search-container {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1.5em;
+      width: 300px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.5em;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay-text">SIGMA SEARCH UNBLOCKER</div>
+  <div class="search-container" id="searchContainer">
+    <input type="text" id="searchQuery" placeholder="Enter a URL or search term..." />
+    <button onclick="search()">Search</button>
+  </div>
+
+  <script>
+    function search() {
+      const query = document.getElementById('searchQuery').value.trim();
+      if (!query) {
+        alert('Please enter a valid search term or URL!');
+        return;
+      }
+
+      // Check if the input is a valid URL or just a search term
+      if (isValidURL(query)) {
+        // If it's a URL, redirect directly to that URL (unblock it)
+        window.location.href = query;
+      } else {
+        // Otherwise, treat it as a search query and redirect to Bing or Google
+        const searchEngine = 'https://www.bing.com/search?q=' + encodeURIComponent(query);
+        window.location.href = searchEngine;
+      }
+    }
+
+    // Function to check if the input is a valid URL
+    function isValidURL(string) {
+      try {
+        new URL(string);
+        return true; // If the URL is valid
+      } catch (e) {
+        return false; // If the URL is invalid
+      }
+    }
+  </script>
+</body>
+</html>
